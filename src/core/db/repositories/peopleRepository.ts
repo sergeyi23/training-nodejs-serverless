@@ -46,3 +46,17 @@ export function deletePersonInDb(id: string): {} {
   writePeoleToFile(people.filter((person) => person.id !== id));
   return {};
 }
+
+export function updatePersonByIdInDb(
+  id: string,
+  name: string,
+  active: boolean
+): PersonEntity | undefined {
+  const people = readPeopleFromFile();
+  const updatedPerson = { name, active };
+  const updatedPeople = people.map((person) => {
+    return person.id === id ? { ...person, ...updatedPerson } : person;
+  });
+  writePeoleToFile(updatedPeople);
+  return updatedPeople.find((person) => person.id === id);
+}

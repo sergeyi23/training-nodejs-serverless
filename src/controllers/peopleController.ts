@@ -3,6 +3,7 @@ import {
   deletePersonInDb,
   getAllPeople,
   getPersonByIdInDb,
+  updatePersonByIdInDb,
 } from 'src/core/db/repositories/peopleRepository';
 import { CeratePersonRequest } from 'src/model/CreatePersonRequest';
 import { CreatePersonResponse } from 'src/model/CreatePersonResponse';
@@ -11,6 +12,8 @@ import { GetPeopleRequest } from 'src/model/GetPeopleRequest';
 import { GetPeopleResponse } from 'src/model/GetPeopleResponse';
 import { GetPersonByIdRequest } from 'src/model/GetPersonByIdRequest';
 import { GetPersonByIdResponse } from 'src/model/GetPersonByIdResponse';
+import { UpdatePersonRequest } from 'src/model/UpdatePersonRequest';
+import { UpdatePersonResponse } from 'src/model/UpdatePersonResponse';
 
 export function getPeople(_request: GetPeopleRequest): GetPeopleResponse {
   const peopleEntity = getAllPeople();
@@ -33,4 +36,16 @@ export function getPersonById(
 
 export function deletePerson(request: DeletePersonRequest): {} {
   return deletePersonInDb(request.id);
+}
+
+export function updatePerson(
+  request: UpdatePersonRequest
+): UpdatePersonResponse {
+  const updatedPerson = updatePersonByIdInDb(
+    request.id,
+    request.name,
+    request.active
+  );
+
+  return new UpdatePersonResponse(updatedPerson);
 }

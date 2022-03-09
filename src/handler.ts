@@ -7,11 +7,13 @@ import {
   deletePerson,
   getPeople,
   getPersonById,
+  updatePerson,
 } from './controllers/peopleController';
 import { CeratePersonRequest } from './model/CreatePersonRequest';
 import { DeletePersonRequest } from './model/DeletePersonRequest';
 import { GetPeopleRequest } from './model/GetPeopleRequest';
 import { GetPersonByIdRequest } from './model/GetPersonByIdRequest';
+import { UpdatePersonRequest } from './model/UpdatePersonRequest';
 
 const app = express();
 app.use(json());
@@ -36,7 +38,9 @@ app.post('/people', (req, res) => {
 });
 
 app.put('/people/:id', (req, res) => {
-  res.json(req.body);
+  const requestModel = new UpdatePersonRequest(req);
+  const responseModel = updatePerson(requestModel);
+  res.json(responseModel);
 });
 
 app.delete('/people/:id', (req, res) => {
