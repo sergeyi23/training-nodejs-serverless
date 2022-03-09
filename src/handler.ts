@@ -9,10 +9,21 @@ import {
   deletePerson,
   UdpatePerson,
 } from './controllers/peopleController';
+import {
+  createPlanet,
+  getPlanets,
+  getPlanet,
+  deletePlanet,
+  UdpatePlanet,
+} from './controllers/planetsController';
 import { CreatePersonRequest } from './model/CreatePersonRequest';
+import { CreatePlanetRequest } from './model/CreatePlanetRequest';
 import { GetPeopleRequest } from './model/GetPeopleRequest';
 import { GetPersonIdRequest } from './model/GetPersonIdRequest';
+import { GetPlanetIdRequest } from './model/GetPlanetIdRequest';
+import { GetPlanetsRequest } from './model/GetPlanetsRequest';
 import { UpdatePersonRequest } from './model/UpdatePersonRequest';
+import { UpdatePlanetRequest } from './model/UpdatePlanetRequest';
 
 const app = express();
 app.use(json());
@@ -45,6 +56,36 @@ app.post('/people', (req, res) => {
 app.put('/people/:id', (req, res) => {
   const requestModel = new UpdatePersonRequest(req);
   const responseModel = UdpatePerson(requestModel);
+  res.json(responseModel);
+});
+
+app.get('/planets', (req, res) => {
+  const requestModel = new GetPlanetsRequest(req);
+  const responseModel = getPlanets(requestModel);
+  res.json(responseModel);
+});
+
+app.get('/planets/:id', (req, res) => {
+  const requestModel = new GetPlanetIdRequest(req);
+  const responseModel = getPlanet(requestModel);
+  res.json(responseModel);
+});
+
+app.delete('/planets/:id', (req, res) => {
+  const requestModel = new GetPlanetIdRequest(req);
+  const responseModel = deletePlanet(requestModel);
+  res.json(responseModel);
+});
+
+app.post('/planets', (req, res) => {
+  const requestModel = new CreatePlanetRequest(req);
+  const reponse = createPlanet(requestModel);
+  res.json(reponse);
+});
+
+app.put('/planets/:id', (req, res) => {
+  const requestModel = new UpdatePlanetRequest(req);
+  const responseModel = UdpatePlanet(requestModel);
   res.json(responseModel);
 });
 
