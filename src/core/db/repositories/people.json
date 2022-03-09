@@ -1,10 +1,20 @@
 [
-  { "id": 1, "name": "Ivan", "active": true, "createTimestamp": 1646680802 },
-  {
-    "id": 10,
-    "name": "John",
-    "active": true,
-    "createTimestamp": 1646680818238
-  },
-  { "id": 10, "name": "Sam", "active": true, "createTimestamp": 1646680827071 }
+	{
+		"id": "7d1b1878-b008-4b03-bc42-07c83907fc63",
+		"name": "Petya",
+		"active": true,
+		"createTimestamp": 1646760803020
+	},
+	{
+		"id": "35191f3d-731f-4b73-bdab-a6c421746655",
+		"name": "Vasiliy",
+		"active": true,
+		"createTimestamp": 1646819587053
+	},
+	{
+		"id": "3592a1c3-7a36-4386-ad2d-e0319629b13b",
+		"name": "Natasha",
+		"active": true,
+		"createTimestamp": 1646761078620
+	}
 ]
