@@ -1,10 +1,12 @@
 import {
   createPersonInDb,
+  deletePersonInDb,
   getAllPeople,
   getPersonByIdInDb,
 } from 'src/core/db/repositories/peopleRepository';
 import { CeratePersonRequest } from 'src/model/CreatePersonRequest';
 import { CreatePersonResponse } from 'src/model/CreatePersonResponse';
+import { DeletePersonRequest } from 'src/model/DeletePersonRequest';
 import { GetPeopleRequest } from 'src/model/GetPeopleRequest';
 import { GetPeopleResponse } from 'src/model/GetPeopleResponse';
 import { GetPersonByIdRequest } from 'src/model/GetPersonByIdRequest';
@@ -27,4 +29,8 @@ export function getPersonById(
 ): GetPersonByIdResponse {
   const person = getPersonByIdInDb(request.id);
   return new GetPersonByIdResponse(person);
+}
+
+export function deletePerson(request: DeletePersonRequest): {} {
+  return deletePersonInDb(request.id);
 }

@@ -40,3 +40,9 @@ export function getPersonByIdInDb(id: string): PersonEntity | undefined {
   const people = readPeopleFromFile();
   return people.find((person) => person.id === id);
 }
+
+export function deletePersonInDb(id: string): {} {
+  const people = readPeopleFromFile();
+  writePeoleToFile(people.filter((person) => person.id !== id));
+  return {};
+}

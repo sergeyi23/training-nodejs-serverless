@@ -4,10 +4,12 @@ import serverlessHttp from 'serverless-http';
 
 import {
   createPerson,
+  deletePerson,
   getPeople,
   getPersonById,
 } from './controllers/peopleController';
 import { CeratePersonRequest } from './model/CreatePersonRequest';
+import { DeletePersonRequest } from './model/DeletePersonRequest';
 import { GetPeopleRequest } from './model/GetPeopleRequest';
 import { GetPersonByIdRequest } from './model/GetPersonByIdRequest';
 
@@ -23,7 +25,6 @@ app.get('/people', (req, res) => {
 
 app.get('/people/:id', (req, res) => {
   const requestModel = new GetPersonByIdRequest(req);
-  console.log(requestModel.id);
   const responseModel = getPersonById(requestModel);
   res.json(responseModel);
 });
@@ -36,6 +37,12 @@ app.post('/people', (req, res) => {
 
 app.put('/people/:id', (req, res) => {
   res.json(req.body);
+});
+
+app.delete('/people/:id', (req, res) => {
+  const requestModel = new DeletePersonRequest(req);
+  const responseModel = deletePerson(requestModel);
+  res.json(responseModel);
 });
 
 app.use((_, res, _2) => {
