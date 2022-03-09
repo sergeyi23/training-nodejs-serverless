@@ -1,10 +1,1 @@
-[
-  { "id": 1, "name": "Ivan", "active": true, "createTimestamp": 1646680802 },
-  {
-    "id": 10,
-    "name": "John",
-    "active": true,
-    "createTimestamp": 1646680818238
-  },
-  { "id": 10, "name": "Sam", "active": true, "createTimestamp": 1646680827071 }
-]
+[{"id":1,"name":"Ivan","active":true,"createTimestamp":1646680802},{"id":2,"name":"Nick2","active":true,"createTimestamp":1646816756793},{"id":3,"name":"Tom3","active":false,"createTimestamp":1646817519691}]

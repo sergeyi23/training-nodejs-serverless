@@ -1,4 +1,4 @@
-export class CreatePersonRequest {
+export class CreatePlanetRequest {
   public id: number;
 
   public name: string;

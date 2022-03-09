@@ -1,12 +1,14 @@
-export class CreatePersonRequest {
-  public id: number;
+export class UpdatePersonRequest {
+  public id: number = 0;
 
   public name: string;
 
   public active: boolean;
 
   constructor(req: any) {
-    this.id = req.body.id;
+    if (req.params.id) {
+      this.id = req.params.id;
+    }
     this.name = req.body.name;
     this.active = req.body.active;
   }

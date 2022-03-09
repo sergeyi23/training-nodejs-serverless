@@ -25,11 +25,45 @@ export function getAllPeople(): PersonEntity[] {
   return people;
 }
 
-export function createPersonInDb(name: string, active: boolean): any {
+export function getPersonByID(PersonId: number): PersonEntity {
   const people = readPeopleFromFile();
-  console.log(JSON.stringify(people));
-  people.push(new PersonEntity(10, name, active, Date.now()));
+  const person =
+    people.find(({ id }) => id == PersonId) ||
+    new PersonEntity(11, 'Nan', false, Date.now());
+  return person;
+}
+
+export function deletePersonInDb(PersonId: number): PersonEntity[] {
+  const people = readPeopleFromFile();
+  const newPeople = people.filter((person) => person.id != PersonId);
+  writePeoleToFile(newPeople);
+  return newPeople;
+}
+
+export function updatePersonInDb(
+  id: number,
+  name: string,
+  active: boolean
+): PersonEntity[] {
+  const people = readPeopleFromFile();
+  const updatePeople = people.map((person) => {
+    if (person.id == id) {
+      person.name = name;
+      person.active = active;
+    }
+    return person;
+  });
+  writePeoleToFile(updatePeople);
+  return updatePeople;
+}
+
+export function createPersonInDb(
+  id: number,
+  name: string,
+  active: boolean
+): any {
+  const people = readPeopleFromFile();
+  people.push(new PersonEntity(id, name, active, Date.now()));
   writePeoleToFile(people);
-  console.log(JSON.stringify(people));
   return people[people.length - 1];
 }
