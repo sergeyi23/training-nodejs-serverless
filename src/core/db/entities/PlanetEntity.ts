@@ -1,16 +1,16 @@
-export class PersonEntity {
+export class PlanetEntity {
   public id: string;
 
   public name: string;
 
-  public active: boolean;
+  public diameter: number;
 
   public createTimestamp: number;
 
-  constructor(id: string, name: string, active: boolean, created: number) {
+  constructor(id: string, name: string, diameter: number, created: number) {
     this.id = id;
     this.name = name;
-    this.active = active;
+    this.diameter = diameter;
     this.createTimestamp = created;
   }
 }
