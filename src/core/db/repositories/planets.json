@@ -1,0 +1,14 @@
+[
+  {
+    "id": "3b927aba-3bdc-4bd4-b52c-a67e382bda9c",
+    "name": "Earth",
+    "habitable": true,
+    "createTimestamp": 1646817598625
+  },
+  {
+    "id": "a81cf3f4-8faa-45b5-a6f2-15cad320e74a",
+    "name": "NEW EARTH",
+    "habitable": false,
+    "createTimestamp": 1646842677714
+  }
+]
