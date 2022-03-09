@@ -2,7 +2,7 @@ import { PersonEntity } from 'src/core/db/entities/PersonEntity';
 
 import { Person } from './Person';
 
-export class CreatePersonResponse {
+export class GetPersonResponse {
   public person: Person;
 
   constructor(person: PersonEntity) {
