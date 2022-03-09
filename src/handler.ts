@@ -2,9 +2,14 @@ import express, { json } from 'express';
 import helmet from 'helmet';
 import serverlessHttp from 'serverless-http';
 
-import { createPerson, getPeople } from './controllers/peopleController';
+import {
+  createPerson,
+  getPeople,
+  getPersonById,
+} from './controllers/peopleController';
 import { CeratePersonRequest } from './model/CreatePersonRequest';
 import { GetPeopleRequest } from './model/GetPeopleRequest';
+import { GetPersonByIdRequest } from './model/GetPersonByIdRequest';
 
 const app = express();
 app.use(json());
@@ -17,16 +22,16 @@ app.get('/people', (req, res) => {
 });
 
 app.get('/people/:id', (req, res) => {
-  res.json({
-    id: req.params.id,
-    name: 'Ivan Ivanov',
-  });
+  const requestModel = new GetPersonByIdRequest(req);
+  console.log(requestModel.id);
+  const responseModel = getPersonById(requestModel);
+  res.json(responseModel);
 });
 
 app.post('/people', (req, res) => {
   const requestModel = new CeratePersonRequest(req);
-  const reponse = createPerson(requestModel);
-  res.json(reponse);
+  const response = createPerson(requestModel);
+  res.json(response);
 });
 
 app.put('/people/:id', (req, res) => {

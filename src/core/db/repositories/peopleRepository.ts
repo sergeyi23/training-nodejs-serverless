@@ -35,3 +35,8 @@ export function createPersonInDb(name: string, active: boolean): any {
   console.log(JSON.stringify(people));
   return people[people.length - 1];
 }
+
+export function getPersonByIdInDb(id: string): PersonEntity | undefined {
+  const people = readPeopleFromFile();
+  return people.find((person) => person.id === id);
+}
