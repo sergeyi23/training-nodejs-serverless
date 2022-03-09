@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+import { v4 } from 'uuid';
+
 import { PersonEntity } from '../entities/PersonEntity';
 
 function readPeopleFromFile(): PersonEntity[] {
@@ -28,7 +30,7 @@ export function getAllPeople(): PersonEntity[] {
 export function createPersonInDb(name: string, active: boolean): any {
   const people = readPeopleFromFile();
   console.log(JSON.stringify(people));
-  people.push(new PersonEntity(10, name, active, Date.now()));
+  people.push(new PersonEntity(v4(), name, active, Date.now()));
   writePeoleToFile(people);
   console.log(JSON.stringify(people));
   return people[people.length - 1];

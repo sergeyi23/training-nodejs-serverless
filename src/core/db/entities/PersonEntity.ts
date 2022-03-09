@@ -1,5 +1,5 @@
 export class PersonEntity {
-  public id: number;
+  public id: string;
 
   public name: string;
 
@@ -7,7 +7,7 @@ export class PersonEntity {
 
   public createTimestamp: number;
 
-  constructor(id: number, name: string, active: boolean, created: number) {
+  constructor(id: string, name: string, active: boolean, created: number) {
     this.id = id;
     this.name = name;
     this.active = active;
