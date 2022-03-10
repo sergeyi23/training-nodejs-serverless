@@ -1,10 +1,5 @@
 [
   { "id": 1, "name": "Ivan", "active": true, "createTimestamp": 1646680802 },
-  {
-    "id": 10,
-    "name": "John",
-    "active": true,
-    "createTimestamp": 1646680818238
-  },
-  { "id": 10, "name": "Sam", "active": true, "createTimestamp": 1646680827071 }
+  { "id": 2, "name": "John", "active": true, "createTimestamp": 1646680818238 },
+  { "id": 3, "name": "Sam", "active": true, "createTimestamp": 1646680827071 }
 ]

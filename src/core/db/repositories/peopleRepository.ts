@@ -33,3 +33,31 @@ export function createPersonInDb(name: string, active: boolean): any {
   console.log(JSON.stringify(people));
   return people[people.length - 1];
 }
+
+export function getPersonIdInDb(id: number): any {
+  const people = readPeopleFromFile();
+  return people.find((person) => person.id === id);
+}
+
+export function deletePersonInDb(id: number): {} {
+  const people = readPeopleFromFile();
+  writePeoleToFile(people.filter((person) => person.id !== id));
+  return {};
+}
+
+export function updatePersonInDb(
+  id: number,
+  name: string,
+  active: boolean
+): PersonEntity | undefined {
+  const people = readPeopleFromFile();
+  const updatePerson = { name, active };
+  const updatePeople = people.map((person) => {
+    if (person.id === id) {
+      return { ...person, ...updatePerson };
+    }
+    return person;
+  });
+  writePeoleToFile(updatePeople);
+  return updatePeople.find((person) => person.id === id);
+}
