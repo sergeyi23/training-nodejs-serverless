@@ -2,9 +2,18 @@ import express, { json } from 'express';
 import helmet from 'helmet';
 import serverlessHttp from 'serverless-http';
 
-import { createPerson, getPeople } from './controllers/peopleController';
+import {
+  createPerson,
+  getPeople,
+  getPersonId,
+  updatePerson,
+  deletePerson,
+} from './controllers/peopleController';
 import { CeratePersonRequest } from './model/CreatePersonRequest';
+import { DeletePersonRequest } from './model/DeletePersonRequest';
 import { GetPeopleRequest } from './model/GetPeopleRequest';
+import { GetPersonIdRequest } from './model/GetPersonIdRequest';
+import { UpdatePersonRequest } from './model/UpdatePersonRequest';
 
 const app = express();
 app.use(json());
@@ -17,20 +26,27 @@ app.get('/people', (req, res) => {
 });
 
 app.get('/people/:id', (req, res) => {
-  res.json({
-    id: req.params.id,
-    name: 'Ivan Ivanov',
-  });
+  const requestModel = new GetPersonIdRequest(req);
+  const responseModel = getPersonId(requestModel);
+  res.json(responseModel);
 });
 
 app.post('/people', (req, res) => {
   const requestModel = new CeratePersonRequest(req);
-  const reponse = createPerson(requestModel);
-  res.json(reponse);
+  const responseModel = createPerson(requestModel);
+  res.json(responseModel);
 });
 
 app.put('/people/:id', (req, res) => {
-  res.json(req.body);
+  const requestModel = new UpdatePersonRequest(req);
+  const responseModel = updatePerson(requestModel);
+  res.json(responseModel);
+});
+
+app.delete('/people/:id', (req, res) => {
+  const requestModel = new DeletePersonRequest(req);
+  const responseModel = deletePerson(requestModel);
+  res.json(responseModel);
 });
 
 app.use((_, res, _2) => {
